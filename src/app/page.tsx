@@ -1,65 +1,114 @@
-import Image from "next/image";
+const caseStudies = [
+  {
+    title: "High-scale Data Processing",
+    summary:
+      "Reduced holdings computation runtime from ~4 hours to ~1.5 hours by moving workloads to Polars and optimizing pipelines.",
+  },
+  {
+    title: "Release Engineering",
+    summary:
+      "Designed standardized CI/CD templates and Docker workflows, cutting production release cycles from hours to minutes.",
+  },
+  {
+    title: "AI in Production",
+    summary:
+      "Built and deployed LLM-assisted market communication tools and FX forecasting workflows used by internal teams.",
+  },
+];
+
+const logos = ["BNY", "NIT Trichy", "iDatalytics", "Angular", "Python"];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="site-shell" id="home">
+      <nav className="top-nav" aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="#case-studies">Case Studies</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#recent-work">Recent Work</a>
+        <a href="#contact">Get In Touch</a>
+      </nav>
+
+      <section className="hero">
+        <div className="hero-copy">
+          <p className="kicker">Full-Stack Developer</p>
+          <h1>Anand A Nair</h1>
+          <p>
+            I build data-heavy products for global markets with a focus on
+            speed, reliability, and practical AI.
           </p>
+          <a className="cta" href="mailto:nair.anand2000@gmail.com">
+            Let&apos;s get started
+          </a>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+
+        <div className="hero-visual" aria-hidden="true">
+          <div className="avatar">AN</div>
+        </div>
+      </section>
+
+      <section className="block" id="case-studies">
+        <h2>Case Studies</h2>
+        <div className="grid">
+          {caseStudies.map((item) => (
+            <article className="panel" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.summary}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="block" id="testimonials">
+        <h2>Testimonials</h2>
+        <article className="panel quote">
+          <p>
+            Worked closely with business and engineering teams to deliver faster,
+            stable releases and measurable performance gains.
+          </p>
+        </article>
+      </section>
+
+      <section className="block" id="recent-work">
+        <h2>Recent Work</h2>
+        <article className="panel">
+          <p>
+            Personal projects will be added here next. This section is kept ready
+            for upcoming work.
+          </p>
+        </article>
+      </section>
+
+      <section className="block" id="contact">
+        <h2>Worked With</h2>
+        <div className="logo-row" role="list" aria-label="Worked with">
+          {logos.map((logo) => (
+            <div className="logo-card" key={logo} role="listitem">
+              {logo}
+            </div>
+          ))}
+        </div>
+
+        <div className="contact-line">
+          <a href="mailto:nair.anand2000@gmail.com">nair.anand2000@gmail.com</a>
+          <span>·</span>
           <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            href="https://linkedin.com/in/anandnair28"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
+            LinkedIn
           </a>
+          <span>·</span>
           <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            href="https://github.com/anandnair28"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Documentation
+            GitHub
           </a>
         </div>
-      </main>
-    </div>
+      </section>
+    </main>
   );
 }

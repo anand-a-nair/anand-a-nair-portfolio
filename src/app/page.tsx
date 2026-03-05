@@ -13,6 +13,14 @@ type TabKey =
   | "fun";
 
 const PROFILE_IMAGE = ""; // Set to your image path from /public, e.g. "/anand.jpg"
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
+const withBasePath = (path: string) => {
+  if (!path) return path;
+  if (path.startsWith("http://") || path.startsWith("https://")) return path;
+  if (path.startsWith("data:")) return path;
+  return `${BASE_PATH}${path.startsWith("/") ? path : `/${path}`}`;
+};
 
 const tabs: { key: TabKey; label: string }[] = [
   { key: "about", label: "About Me" },
@@ -76,15 +84,17 @@ const skills = {
 };
 
 const iconSrc = {
-  sun: "/icons/sun.svg",
-  moon: "/icons/moon.svg",
-  phone: "/icons/phone.svg",
-  mail: "/icons/mail.svg",
-  github: "/icons/github.svg",
-  linkedin: "/icons/linkedin.svg",
-  leetcode: "/icons/leetcode.svg",
-  graduation: "/icons/graduation-cap.svg",
+  sun: withBasePath("/icons/sun.svg"),
+  moon: withBasePath("/icons/moon.svg"),
+  phone: withBasePath("/icons/phone.svg"),
+  mail: withBasePath("/icons/mail.svg"),
+  github: withBasePath("/icons/github.svg"),
+  linkedin: withBasePath("/icons/linkedin.svg"),
+  leetcode: withBasePath("/icons/leetcode.svg"),
+  graduation: withBasePath("/icons/graduation-cap.svg"),
 } as const;
+
+const resolvedProfileImage = PROFILE_IMAGE ? withBasePath(PROFILE_IMAGE) : "";
 export default function Home() {
   const [activeTab, setActiveTab] = useState<TabKey | null>(null);
   const [theme, setTheme] = useState<"light" | "dark">("light");
@@ -638,9 +648,9 @@ export default function Home() {
             <p className="role-line">Full Stack Developer / AI Engineer</p>
 
             <div className="display-picture" aria-label="Profile Picture">
-              {PROFILE_IMAGE ? (
+              {resolvedProfileImage ? (
                 <Image
-                  src={PROFILE_IMAGE}
+                  src={resolvedProfileImage}
                   alt="Anand"
                   className="profile-image"
                   fill

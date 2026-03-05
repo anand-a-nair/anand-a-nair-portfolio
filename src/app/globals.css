@@ -37,17 +37,11 @@ body {
 body {
   color: var(--text);
   font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
-  background:
-    radial-gradient(circle at 15% 30%, #dce8ff6b 0%, #f2f4f8 42%),
-    radial-gradient(circle at 88% 80%, #d6ffd84b 0%, #f2f4f8 40%),
-    linear-gradient(160deg, #f5f7fb 0%, #edf1f7 100%);
+  background: linear-gradient(160deg, #f5f7fb 0%, #edf1f7 100%);
 }
 
 [data-theme="dark"] body {
-  background:
-    radial-gradient(circle at 20% 24%, #2a3f7569 0%, #0e1118 42%),
-    radial-gradient(circle at 84% 75%, #2f6f4a4f 0%, #0e1118 38%),
-    linear-gradient(165deg, #101622 0%, #0a0e17 100%);
+  background: linear-gradient(165deg, #101622 0%, #0a0e17 100%);
 }
 
 a {

@@ -12,7 +12,7 @@ type TabKey =
   | "contact"
   | "fun";
 
-const PROFILE_IMAGE = ""; // Set to your image path from /public, e.g. "/anand.jpg"
+const PROFILE_IMAGE = "dp/anand-a-nair-dp.jpeg"; // Set to your image path from /public, e.g. "/anand.jpg"
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 const withBasePath = (path: string) => {
